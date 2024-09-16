@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flixtube-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flixtube-app  # This should match the label used in your Deployment or Pod configuration
+  ports:
+    - protocol: TCP
+      port: 80          # External port to expose your application
+      targetPort: 8080  # The port your Flixtube application is listening on inside the container
