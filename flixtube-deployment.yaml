@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flixtube-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flixtube-app
+  template:
+    metadata:
+      labels:
+        app: flixtube-app  # This label should match the selector in your Service YAML
+    spec:
+      containers:
+      - name: flixtube-container
+        image: flixtuberegistry1.azurecr.io/flixtube-image:latest
+
+  # Replace with your Docker image for Flixtube
+        ports:
+        - containerPort: 8080
